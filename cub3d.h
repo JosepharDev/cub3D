@@ -14,12 +14,23 @@ typedef struct s_data
 	char *first_map;
 	char **map;
 	char *resulotion;
+	int ind_res;
 	char *ceial;
+	int ind_ciel;
 	char *floor;
+	int ind_flor;
 	char *NO;
+	int ind_NO;
+	int NO_fd;
 	char *SO;
+	int ind_SO;
+	int SO_fd;
 	char *WE;
+	int ind_WE;
+	int WE_fd;
 	char *EA;
+	int ind_EA;
+	int EA_fd;
 }t_data;
 
 
