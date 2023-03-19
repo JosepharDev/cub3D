@@ -6,11 +6,11 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:36:54 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 09:59:46 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	get_path(char *line)
 {

@@ -6,11 +6,11 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:18:24 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 09:59:36 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	get_color(t_map *map, char **rgb)
 {

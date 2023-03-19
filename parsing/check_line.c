@@ -6,11 +6,11 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:11:37 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 09:59:11 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	check_player(char *line, t_map *map)
 {
