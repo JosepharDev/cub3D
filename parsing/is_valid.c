@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:34:45 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:21 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 15:55:42 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*get_last(char *name)
 int	check_name(char *name)
 {
 	int		len;
-	char	*copy;
 	int		flag;
 
 	flag = 0;
@@ -55,6 +54,7 @@ int	is_valid(char *arg)
 {
 	int	fd;
 
+	fd = 0;
 	if (!check_name(arg))
 		ft_error("Error\ninvalid file name\n", NULL);
 	else

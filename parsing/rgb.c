@@ -6,13 +6,13 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:36 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 16:06:40 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	get_color(t_map *map, char **rgb)
+int	get_color(char **rgb)
 {
 	int	n1;
 	int	n2;
@@ -38,7 +38,7 @@ void	replace_char(char *line, char c)
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		if (line[i] == ',')
+		if (line[i] == c)
 		{
 			line[i] = ' ';
 			i++;
@@ -97,7 +97,7 @@ void	rgb_f(t_map *map)
 		free_matrix(rgb);
 		ft_error("Error\ninvalid rgb\n", NULL);
 	}
-	map->floor_c = get_color(map, rgb);
+	map->floor_c = get_color(rgb);
 	free_matrix(rgb);
 	return ;
 }
@@ -120,7 +120,7 @@ void	rgb_c(t_map *map)
 		free_matrix(rgb);
 		ft_error("Error\ninvalid rgb\n", NULL);
 	}
-	map->ceil_c = get_color(map, rgb);
+	map->ceil_c = get_color(rgb);
 	free_matrix(rgb);
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:11 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 16:01:25 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	check_player(char *line, t_map *map)
 
 void	store_map(t_game *game, char *line)
 {
-	int	len;
-
 	if (!game->map->map)
 	{
 		game->map->map = malloc(sizeof(char *) * 2);
