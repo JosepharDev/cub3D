@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:54:01 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:51 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 19:46:56 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,12 @@ int	ft_check_vertical(t_map *map)
 		while (i < map->height)
 		{
 			if (ft_cmplt_ver(map, i, j) == 1)
+			{
+				printf("--i = %d -- j = %d\n", i, j);
+				printf("--- c =%c--\n", map->map[i][j]);
+				printf("--line = %s\n", map->map[i]);
 				return (1);
+			}
 			i++;
 		}
 		j++;

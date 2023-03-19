@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 16:01:25 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/19 19:41:12 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	check_player(char *line, t_map *map)
 	{
 		if (strchr("EWSN", line[i]))
 		{
+			if (line[i] && line[i + 1] != '0' && line[i + 1] != '1'
+				&& line[i + 1] != ' ')
+				ft_error("Error\nmap is messing\n", NULL);
 			if (map->start_p)
 				return (1);
 			map->start_p = line[i];
