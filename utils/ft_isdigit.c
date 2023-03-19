@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:42:23 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:51:40 by yoyahya          ###   ########.fr       */
+/*   Created: 2023/03/18 10:38:14 by yoyahya           #+#    #+#             */
+/*   Updated: 2023/03/18 13:27:13 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	ft_isdigit(char c)
 {
-	t_game	game;
-
-	if (ac != 2)
-		ft_error("Error\nnumber of arg not valid\n", NULL);
-	parser(&game, av[1]);
-	printf("-%c\n", game.map->start_p);
-	printf("--%d\n", game.map->player.px);
-	printf("--%d\n", game.map->player.py);
-	
-	return (99);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

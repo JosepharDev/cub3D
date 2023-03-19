@@ -1,84 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 10:34:08 by yoyahya           #+#    #+#             */
+/*   Updated: 2023/03/19 09:53:48 by yoyahya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-char *get_last(char *name)
+void	get_player(t_map *map)
 {
-	char **str;
-	int i;
-	char *copy;
+	int	i;
+	int	j;
 
 	i = 0;
-	str = ft_split(name, '/');
-	while(str[i])
-		i++;
-	copy = ft_strdup(str[i - 1]);
-	free_matrix(str);
-	return (copy);
-}
-
-int check_name(char *name)
-{
-	int len;
-	char *copy;
-	int flag = 0;
-	if (strchr(name, '/') != NULL)
+	j = 0;
+	while(map->map[i])
 	{
-		name = get_last(name);
-		flag = 1;
-	}
-	len = strlen(name);
-	if (len > 4 && strncmp(((name + len) - 4), ".cub", 4) == 0)
-	{
-		if (flag == 1)
-			free(name);
-		return (1);
-	}
-	if (flag == 1)
-		free(name);
-	return (0);
-}
-
-int is_valid(char *arg, t_data *data)
-{
-	if (!check_name(arg))
-	{
-		printf("invalid file name\n");
-		exit(1);
-	}
-	else
-	{
-		data->fd = open(arg, O_RDONLY);
-		if (data->fd == -1)
+		j = 0;
+		while(map->map[i][j])
 		{
-			perror("Error");
-			exit(1);
+			if (map->map[i][j] == 'S' || map->map[i][j] == 'N'
+				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
+			{
+				map->player.px = i;
+				map->player.py = j;
+				return;
+			}
+			j++;
 		}
+		i++;
 	}
-	return (1);
 }
 
-int get_map(t_data *data)
+void	init(t_game *game)
 {
-	int i;
-	char *line;
-	char *map;
-
-	map = NULL;
-	i = 0;
-	line = get_next_line(data->fd);
-	while(line)
-	{
-		map = ft_strjoin(map, line);
-		free(line);
-		line = get_next_line(data->fd);
-	}
-	data->first_map = map;
-	return (1);
+	game->map = malloc(sizeof(t_map));
+	game->map->textur = malloc(sizeof(t_textur));
+	game->map->textur->ceil = NULL;
+	game->map->textur->ea = NULL;
+	game->map->textur->floor = NULL;
+	game->map->textur->no = NULL;
+	game->map->textur->so = NULL;
+	game->map->textur->we = NULL;
+	game->map->map = NULL;
+	game->map->start_p = '\0';
 }
-void split_map(t_data *data)
+
+void	parser(t_game *game, char *name)
 {
-	int i;
-	char **tmp;
-	i = 0;
-	tmp = ft_split(data->first_map, '\n');
-	map_item(tmp, data);
+	int	fd;
+
+	init(game);
+	fd = is_valid(name);
+	read_file(game, fd);
+	if (!game->map->start_p)
+		ft_error("Error\nplayer is mission\n", NULL);
+	v_texture(game->map);
+	game->map->height = get_height(game->map->map);
+	game->map->width = get_mlen(game->map->map);
+	valid_map(game->map);
 }

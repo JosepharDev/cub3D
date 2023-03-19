@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:42:23 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:51:40 by yoyahya          ###   ########.fr       */
+/*   Created: 2023/03/18 10:38:21 by yoyahya           #+#    #+#             */
+/*   Updated: 2023/03/18 13:27:17 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int ac, char **av)
+char	*ft_strdup(char *s1)
 {
-	t_game	game;
+	int		i;
+	char	*copy;
+	int		len;
 
-	if (ac != 2)
-		ft_error("Error\nnumber of arg not valid\n", NULL);
-	parser(&game, av[1]);
-	printf("-%c\n", game.map->start_p);
-	printf("--%d\n", game.map->player.px);
-	printf("--%d\n", game.map->player.py);
-	
-	return (99);
+	i = 0;
+	len = ft_strlen(s1);
+	copy = (char *)malloc(len * sizeof(char) + 1);
+	if (copy == NULL)
+		return (NULL);
+	while (*s1)
+	{
+		copy[i] = *s1;
+		i++;
+		s1++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
