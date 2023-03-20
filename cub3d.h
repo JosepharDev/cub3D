@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:57:16 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:47:14 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:03:32 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	rgb_c(t_map *map);
 void	v_texture(t_map *map);
 void	valid_map(t_map *map);
 void	get_player(t_map *map);
+int	texture_line(char *line);
 
 #endif

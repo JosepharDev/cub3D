@@ -6,12 +6,28 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 19:41:12 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/20 21:05:44 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+int	texture_line(char *line)
+{
+	char	**texture;
+
+	texture = ft_split(line, ' ');
+	if (!texture)
+		ft_error("Error\nError in malloc\n", NULL);
+	if (len_matrix(texture) != 2)
+	{
+		if (len_matrix(texture) == 3 && texture[2][0] == '\n')
+			return (1);
+		else
+			ft_error("Error\ninvalid texture", NULL);
+	}
+	return (1);	
+}
 int	check_player(char *line, t_map *map)
 {
 	int	i;

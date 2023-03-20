@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:35:45 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:33 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:09:03 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	read_file(t_game *game, int fd)
 		ft_error("Error\nfile is empty\n", NULL);
 	while (line)
 	{
-		if (line[0] == '\n' || all_space(line))
+		if (line[0] == '\n' /*|| all_space(line)*/)
 		{
 			if (game->map->map)
 				ft_error("Error\ninvalid map newline within the map\n", NULL);
