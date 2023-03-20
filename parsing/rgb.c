@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 16:06:40 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/20 21:11:34 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,12 @@ void	rgb_f(t_map *map)
 	rgb = ft_split(map->textur->floor, ' ');
 	if (len_matrix(rgb) != 3)
 	{
-		free_matrix(rgb);
-		ft_error("Error\ninvalid rgb\n", NULL);
+		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
+		{
+			printf("-----");
+			free_matrix(rgb);
+			ft_error("Error\ninvalid rgb\n", NULL);
+		}
 	}
 	map->floor_c = get_color(rgb);
 	free_matrix(rgb);
@@ -117,8 +121,12 @@ void	rgb_c(t_map *map)
 	rgb = ft_split(map->textur->ceil, ' ');
 	if (len_matrix(rgb) != 3)
 	{
-		free_matrix(rgb);
-		ft_error("Error\ninvalid rgb\n", NULL);
+		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
+		{
+			printf("-----");
+			free_matrix(rgb);
+			ft_error("Error\ninvalid rgb\n", NULL);
+		}
 	}
 	map->ceil_c = get_color(rgb);
 	free_matrix(rgb);
