@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/20 21:11:34 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/29 21:40:33 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
-int	get_color(char **rgb)
+int	get_color1(char **rgb)
 {
 	int	n1;
 	int	n2;
@@ -33,12 +33,13 @@ int	get_color(char **rgb)
 
 void	replace_char(char *line, char c)
 {
-	int	i;
+	(void)c;
+	int		i;
 
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		if (line[i] == c)
+		if (line[i] == ',')
 		{
 			line[i] = ' ';
 			i++;
@@ -94,14 +95,10 @@ void	rgb_f(t_map *map)
 	rgb = ft_split(map->textur->floor, ' ');
 	if (len_matrix(rgb) != 3)
 	{
-		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
-		{
-			printf("-----");
-			free_matrix(rgb);
-			ft_error("Error\ninvalid rgb\n", NULL);
-		}
+		free_matrix(rgb);
+		ft_error("Error\ninvalid rgb\n", NULL);
 	}
-	map->floor_c = get_color(rgb);
+	map->floor_c = get_color1(rgb);
 	free_matrix(rgb);
 	return ;
 }
@@ -121,14 +118,10 @@ void	rgb_c(t_map *map)
 	rgb = ft_split(map->textur->ceil, ' ');
 	if (len_matrix(rgb) != 3)
 	{
-		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
-		{
-			printf("-----");
-			free_matrix(rgb);
-			ft_error("Error\ninvalid rgb\n", NULL);
-		}
+		free_matrix(rgb);
+		ft_error("Error\ninvalid rgb\n", NULL);
 	}
-	map->ceil_c = get_color(rgb);
+	map->ceil_c = get_color1(rgb);
 	free_matrix(rgb);
 	return ;
 }

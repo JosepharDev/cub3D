@@ -3,31 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/20 21:05:44 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/04 11:20:18 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
-int	texture_line(char *line)
-{
-	char	**texture;
-
-	texture = ft_split(line, ' ');
-	if (!texture)
-		ft_error("Error\nError in malloc\n", NULL);
-	if (len_matrix(texture) != 2)
-	{
-		if (len_matrix(texture) == 3 && texture[2][0] == '\n')
-			return (1);
-		else
-			ft_error("Error\ninvalid texture", NULL);
-	}
-	return (1);	
-}
 int	check_player(char *line, t_map *map)
 {
 	int	i;
@@ -59,6 +43,7 @@ void	store_map(t_game *game, char *line)
 	}
 	else
 		game->map->map = dup_matrix(game->map->map, line);
+	// free(game->map->map);
 }
 
 // void	check_line1(t_game *game, char *line)

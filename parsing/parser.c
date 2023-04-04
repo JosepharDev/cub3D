@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:34:08 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:29 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/23 08:25:39 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 void	get_player(t_map *map)
 {
@@ -49,19 +49,4 @@ void	init(t_game *game)
 	game->map->textur->we = NULL;
 	game->map->map = NULL;
 	game->map->start_p = '\0';
-}
-
-void	parser(t_game *game, char *name)
-{
-	int	fd;
-
-	init(game);
-	fd = is_valid(name);
-	read_file(game, fd);
-	if (!game->map->start_p)
-		ft_error("Error\nplayer is mission\n", NULL);
-	v_texture(game->map);
-	game->map->height = get_height(game->map->map);
-	game->map->width = get_mlen(game->map->map);
-	valid_map(game->map);
 }

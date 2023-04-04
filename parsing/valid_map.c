@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:54:01 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 19:46:56 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/03/20 08:37:48 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 int	ft_cmplt_horz(t_map *map, int i, int j)
 {

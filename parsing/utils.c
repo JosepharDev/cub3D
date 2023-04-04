@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:49:45 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 09:59:39 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/04 17:28:46 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 void	map_withspace(t_map *map)
 {
@@ -96,3 +96,5 @@ void	line_del(t_map *map)
 		j = 0;
 	}
 }
+
+

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   v_texture.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/20 20:05:50 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/04 17:18:23 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 void	get_path(char *line)
 {
@@ -69,27 +69,27 @@ int	is_texture(char *line)
 
 int	get_texture1(t_game *game, char *line, int len, int i)
 {
-	if (strncmp(&line[i], "NO ", 3) == 0 && len > 3 && texture_line(line))
+	if (strncmp(&line[i], "NO ", 3) == 0 && len > 3)
 	{
 		if (game->map->textur->no)
 			return (0);
 		game->map->textur->no = ft_strdup(line + 3);
 	}
-	else if (strncmp(&line[i], "SO ", 3) == 0 && len > 3 && texture_line(line))
+	else if (strncmp(&line[i], "SO ", 3) == 0 && len > 3)
 	{
 		if (game->map->textur->so)
 			return (0);
 		game->map->textur->so = ft_strdup(line + 3);
 	}
-	else if (strncmp(&line[i], "WE ", 3) == 0 && len > 3 && texture_line(line))
+	else if (strncmp(&line[i], "WE ", 3) == 0 && len > 3)
 	{
 		if (game->map->textur->we)
 			return (0);
 		game->map->textur->we = ft_strdup(line + 3);
 	}
-	else if (strncmp(&line[i], "EA ", 3) == 0 && len > 3 && texture_line(line))
+	else if (strncmp(&line[i], "EA ", 3) == 0 && len > 3)
 	{
-		if (game->map->textur->ea && texture_line(line))
+		if (game->map->textur->ea)
 			return (0);
 		game->map->textur->ea = ft_strdup(line + 3);
 	}
