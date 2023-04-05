@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:57:19 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 13:29:01 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/05 13:40:07 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../cub3D.h"
+// # include "../cub3D.h"
 
 size_t	ft_strlen1(char *str);
 char	*ft_strchr(char *s, int c);
