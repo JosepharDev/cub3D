@@ -24,7 +24,7 @@ fclean : clean
 push:
 	@make fclean
 	@git add .
-	@git commit -m "----Cub3D----1337---"
+	@git commit -m "----Cub3D-last----1337---"
 	@git push
 
 re : fclean all
