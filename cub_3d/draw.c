@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 21:56:31 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/05 16:18:32 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:10:41 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_color(t_img *data, int x, int y, t_player	*p)
 	return (*(unsigned int *) dst);
 }
 
-void	my_pixel_put(t_img data, int x, int y, int color)
+void	my_pixel_put(t_img data, int x, int y, int *color)
 {
 	t_player	*p;
 	char		*dst;
@@ -32,7 +32,9 @@ void	my_pixel_put(t_img data, int x, int y, int color)
 		return ;
 	printf("%d--lllllllll----\n", p->calc.win_ht);
 	dst = data.addr + (y * data.line_length + x * (data.pixel / 8));
-	*(unsigned int *) dst = color;
+	*color = *(unsigned int *)dst;
+	printf("++++++%d-----\n", *color);
+	// *(unsigned int *) dst = color;
 	free(p);
 }
 
@@ -57,8 +59,8 @@ t_img	*get_wich(t_player *p)
 	// 	// return (p->img_n);
 	// if (p->calc.wtex == 'W')
 	// {
-		printf("WWWW\n");
-		printf("-----hello----\n");
+		// printf("WWWW\n");
+		// printf("-----hello----\n");
 		direction = p->img_w->img;
 		return (direction);
 	// }
@@ -78,7 +80,7 @@ int	draw_line(t_point fr, double toy, int color, t_img p_img)
 {	
 	while (fr.y < toy)
 	{
-		my_pixel_put(p_img, fr.x, fr.y, color);
+		my_pixel_put(p_img, fr.x, fr.y, &color);
 		(fr.y)++;
 	}
 	return (0);
@@ -101,7 +103,10 @@ int	draw_texture(t_point fr, t_img p_img, t_player *p, double wallh)
 	while (fr.y < p->calc.toy)
 	{
 		color = get_color(img, p->calc.tox, newy, p);
-		my_pixel_put(p_img, fr.x, fr.y, color);
+		// printf("++++%d----\n", color);
+
+		my_pixel_put(p_img, fr.x, fr.y, &color);
+		// printf("++++%d----\n", color);
 		(fr.y)++;
 		newy += inc;
 		if (newy > img->h)

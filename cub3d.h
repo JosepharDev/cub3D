@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:57:16 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/05 14:07:57 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/05 17:04:15 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int		is_wallv(t_player *p, int x, int y);
 int		is_wallh(t_player *p, int x, int y);
 void    fcheck_valid_texture(t_player   *p);
 int		fvalid_mouve(t_player *p, double x, double y);
-void	my_pixel_put(t_img data, int x, int y, int color);
+void	my_pixel_put(t_img data, int x, int y, int *color);
 void	fcheck_position(t_player *p, int c, int i, int j);
 void	draw(t_player *p, double wallh, double dis, int i);
 int		get_color(t_img *data, int x, int y, t_player	*p);
