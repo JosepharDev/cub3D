@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fddah.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:38:02 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 13:24:02 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/08 17:26:34 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	is_wallh(t_player *p, int x, int y)
 	x += inc.x;
 	y += inc.y;
 	if (!(y < p->map_height / TILE_SIZE && y >= 0
-			&& x < ft_strlen(p->map->map[y]) && x >= 0))
+			&& x < ft_strlen1(p->map->map[y]) && x >= 0))
 		return (-1);
 	else if (p->map->map[y][x] == '1')
 		return (1);

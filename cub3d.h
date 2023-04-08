@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:34:27 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 13:21:15 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/08 21:50:52 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_textur
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
+	char	*floor;
+	char	*ceil;
 }	t_textur;
 
 typedef struct s_vector
@@ -73,6 +75,7 @@ typedef struct s_map
 {
 	char		**map;
 	int			height;
+	int			width;
 	t_textur	*textur;
 	char		starting_pos;
 	int			floor_color;
@@ -152,7 +155,7 @@ void	get_player_info(char **map, t_player *p);
 void	fdda_horizontal(t_player *p);
 void	fdda_vertical(t_player *p);
 void	ft_error(char *error);
-int		ft_strlen(const char *s);
+int		ft_strlen1(char *s);
 char	*get_next_line(int fd);
 char	*get_next_line_2(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -186,4 +189,43 @@ void	free_matrix(char **mx);
 char	**ft_sp(char *s, char c);
 void	rendering_cub3d(t_map *map);
 
+
+
+
+
+//////////  error ///////
+void	ft_error1(char *str, char *fre);
+
+///////		utils /////////
+void	line_del(t_map *map);
+int		ft_atoi(char *str);
+void	free_matrix(char **mx);
+char	*ft_substr1(char *s, unsigned int start, size_t len);
+char	**ft_split1(char *s, char c);
+char	*ft_strdup1(char *s1);
+char	*ft_strjoin1(char *s1, char *s2);
+int		ft_isalpha1(char c);
+int		ft_isdigit1(char c);
+int		get_mlen(char **str);
+int		get_height(char **str);
+void	map_withspace(t_map *map);
+void	parser(t_game *game, char *name);
+int		is_map(char *line);
+int		white_s(char *line);
+int		is_valid1(char *arg);
+int		check_name(char *name);
+char	*get_last(char *name);
+int		read_file1(t_game *game, int fd);
+void	store_map(t_game *game, char *line);
+void	check_line(t_game *game, char *line);
+int		get_texture(t_game *game, char *line);
+int		len_matrix(char **arr);
+char	**dup_matrix(char **arr, char *line);
+int		is_texture(char *line);
+void	rgb_f(t_map *map);
+void	rgb_c(t_map *map);
+void	v_texture(t_map *map);
+void	valid_map(t_map *map);
+void	get_player(t_map *map);
+int	texture_line(char *line);
 #endif

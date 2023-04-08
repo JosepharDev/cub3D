@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   ft_isalpha1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 21:49:33 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 22:53:05 by yoyahya          ###   ########.fr       */
+/*   Created: 2023/03/18 10:38:08 by yoyahya           #+#    #+#             */
+/*   Updated: 2023/04/08 17:02:59 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_error(char *error)
+int	ft_isalpha1(char c)
 {
-	write(2, "Error\n", 6);
-	write(2, error, ft_strlen(error));
-	exit(EXIT_FAILURE);
-}
-int	main(int ac, char **av)
-{
-	t_game	game;
-
-	if (ac != 2)
-		ft_error1("Error\nnumber of arg not valid\n", NULL);
-	parser(&game, av[1]);
-	rendering_cub3d(game.map);
-	free_matrix(game.map->map);
-	while(1);
-	return (99);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

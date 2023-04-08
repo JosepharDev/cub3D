@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   ft_strdup1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 21:49:33 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 22:53:05 by yoyahya          ###   ########.fr       */
+/*   Created: 2023/03/18 10:38:21 by yoyahya           #+#    #+#             */
+/*   Updated: 2023/04/08 17:02:33 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	ft_error(char *error)
+char	*ft_strdup1(char *s1)
 {
-	write(2, "Error\n", 6);
-	write(2, error, ft_strlen(error));
-	exit(EXIT_FAILURE);
-}
-int	main(int ac, char **av)
-{
-	t_game	game;
+	int		i;
+	char	*copy;
+	int		len;
 
-	if (ac != 2)
-		ft_error1("Error\nnumber of arg not valid\n", NULL);
-	parser(&game, av[1]);
-	rendering_cub3d(game.map);
-	free_matrix(game.map->map);
-	while(1);
-	return (99);
+	i = 0;
+	len = ft_strlen(s1);
+	copy = (char *)malloc(len * sizeof(char) + 1);
+	if (copy == NULL)
+		return (NULL);
+	while (*s1)
+	{
+		copy[i] = *s1;
+		i++;
+		s1++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

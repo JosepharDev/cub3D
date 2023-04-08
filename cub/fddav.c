@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fddav.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:38:16 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 13:26:32 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/08 17:26:45 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	is_wallv(t_player *p, int px, int py)
 	px += increment.x;
 	py += increment.y;
 	if (!(py < p->map_height / TILE_SIZE && py >= 0
-			&& px < ft_strlen(p->map->map[py]) && px >= 0))
+			&& px < ft_strlen1(p->map->map[py]) && px >= 0))
 		return (-1);
 	else if (p->map->map[py][px] == '1')
 		return (1);
