@@ -5,96 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:38:19 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 13:30:57 by mdarify          ###   ########.fr       */
+/*   Created: 2023/04/06 21:47:49 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/08 10:44:37 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3d.h"
 
-static int	count(char *str, char c)
+char	**ft_malloc_error(char **tab)
 {
 	int	i;
-	int	count;
 
-	count = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			i++;
-		else
-		{
-			count++;
-			while (str[i] != c && str[i])
-				i++;
-		}
-	}
-	return (count);
-}
-
-static char	*mword(char *s, char c, int *i)
-{
-	int		len;
-	int		j;
-	char	*temp;
-
-	while (s[*i] == c)
-		(*i)++;
-	len = 0;
-	j = *i;
-	while (s[j] && s[j] != c)
-	{
-		len++;
-		j++;
-	}
-	temp = malloc((len + 1) * sizeof(char));
-	j = 0;
-	if (temp == NULL)
-		return (NULL);
-	while (s[(*i)] != '\0' && s[(*i)] != c)
-	{
-		temp[j] = s[(*i)];
-		j++;
-		(*i)++;
-	}
-	temp[j] = '\0';
-	return (temp);
-}
-
-static char	**merror(char **tab)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
 	free(tab);
 	return (NULL);
 }
 
-char	**ft_split(char *s, char c)
+size_t	ft_strlcpy(char *dist, const char *src, size_t dstsize)
 {
-	char	**arr;
-	int		k;
-	int		cont;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	k = 0;
-	if (s == NULL)
-		return (NULL);
-	cont = count(s, c);
-	arr = malloc((cont + 1) * sizeof(char *));
-	if (arr == NULL)
-		return (NULL);
-	while (i < cont)
+	if (dstsize > 0)
 	{
-		arr[i] = mword(s, c, &k);
-		if (!arr[i])
-			return (merror(arr));
+		while (src[i] && i < (dstsize - 1))
+		{
+			dist[i] = src[i];
+			i++;
+		}
+		dist[i] = '\0';
+	}
+	return (ft_strlen(src));
+}
+
+int	num_of_words(const char *str, char c, int *k)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			(*k)++;
+		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
+			j++;
 		i++;
 	}
-	arr[i] = 0;
-	return (arr);
+	return (j);
+}
+
+char	*next_str(char const *s, char c)
+{
+	int		i;
+	char	*tab;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	tab = (char *)malloc(sizeof(char) * (i + 1));
+	if (!tab)
+		return (NULL);
+	ft_strlcpy(tab, s, i + 1);
+	return (tab);
+}
+
+char	**ft_split(char const *s, char c, int *k)
+{
+	int		i;
+	int		strs_len;
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	strs_len = num_of_words(s, c, k);
+	tab = (char **)malloc(sizeof(char *) * (strs_len + 1));
+	if (!tab)
+		return (NULL);
+	i = -1;
+	while (++i < strs_len)
+	{
+		while (s[0] == c)
+			s++;
+		tab[i] = next_str(s, c);
+		if (!tab[i])
+			return (ft_malloc_error(tab));
+		s = s + ft_strlen(tab[i]);
+	}
+	tab[i] = 0;
+	return (tab);
 }

@@ -1,11 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/06 13:22:57 by mdarify           #+#    #+#              #
+#    Updated: 2023/04/08 11:14:42 by mdarify          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-SRCS = getnextline/get_next_line.c getnextline/get_next_line_utils.c parsing/check_line.c parsing/error.c parsing/is_valid.c\
-		utils/ft_isalpha.c utils/ft_isdigit.c utils/ft_split.c utils/ft_strdup.c utils/ft_strjoin.c utils/ft_substr.c\
-		parsing/parser.c parsing/read_file.c parsing/rgb.c parsing/utils.c parsing/utils1.c parsing/v_texture.c\
-		parsing/valid_map.c cub_3d/dda.c cub_3d/draw.c cub_3d/position.c cub_3d/render_3d.c  cub_3d/texture.c cub_3d/utils.c\
-		cub_3d/help.c cub3D.c 
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+SRCS = parsing/fmap.c parsing/felem.c parsing/collect_map.c parsing/fcolor.c\
+	parsing/ft_check_file.c parsing/map_setting.c parsing/texture.c\
+	cub/fdda.c cub/fddah.c cub/fddav.c cub/info.c cub/move.c cub/rend.c cub/rend3d.c cub/utils.c\
+	utils/fcalc_nb.c utils/ft_calloc.c  utils/ft_split.c utils/ft_strchr.c utils/ft_strdup.c\
+	utils/ft_strjoin.c utils/ft_strlen.c utils/ft_strncmp.c utils/ft_strrchr.c utils/gcl.c utils/util.c\
+	utils/ft_itoa.c utils/ft_sp.c cub3d.c 
  
 OBJ = $(SRCS:.c=.o)
 MLX_FLAGS    = -lmlx -framework OpenGL -framework Appkit
@@ -24,7 +37,10 @@ fclean : clean
 push:
 	@make fclean
 	@git add .
-	@git commit -m "----Cub3D-last----1337---"
+	@git commit -m "--Cub3D--1337---"
 	@git push
 
 re : fclean all
+
+
+.PHONY: all clean fclean  push re

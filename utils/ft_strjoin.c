@@ -5,38 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:38:26 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/03/19 14:08:56 by mdarify          ###   ########.fr       */
+/*   Created: 2023/04/06 21:48:47 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/07 14:17:23 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3d.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+static	char	*ft_strcat(char *pdf, char *dest, char *src)
 {
-	char			*str;
-	size_t			tlen;
-	size_t			i;
-	size_t			j;
+	int	m;
+	int	n;
+	int	j;
 
-	if (!s1)
-	{
-		s1 = malloc(sizeof(char) * 1);
-		s1[0] = '\0';
-	}
-	if (!s1 || !s2)
-		return (NULL);
-	tlen = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(tlen * sizeof(char) + 1);
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	while (s1[++i] != '\0')
-		str[i] = s1[i];
+	m = 0;
+	n = 0;
 	j = 0;
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
-	return (str);
+	while (dest[m] != '\0')
+	{
+		pdf[j] = dest[m];
+		m++;
+		j++;
+	}
+	while (src[n] != '\0')
+	{
+		pdf[j + n] = src[n];
+		n++;
+	}
+	pdf[j + n] = '\0';
+	return (pdf);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	s_index;
+	size_t	z_index;
+	char	*pdf;
+	char	*src;
+	char	*dst;
+
+	src = (char *)s1;
+	dst = (char *)s2;
+	if (!s1 || !s2)
+		return (0);
+	s_index = ft_strlen(s1);
+	z_index = ft_strlen(s2) + 1;
+	pdf = (char *)malloc((s_index + z_index) * sizeof(char));
+	if (!pdf)
+		return (NULL);
+	pdf = ft_strcat(pdf, src, dst);
+	return (pdf);
 }

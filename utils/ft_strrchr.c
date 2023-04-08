@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 21:48:04 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 10:44:45 by mdarify          ###   ########.fr       */
+/*   Created: 2023/04/06 13:36:55 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/08 10:44:58 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*ft_strdup(const	char	*s)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*pdf;
-	int		size;
-	int		len;
+	int		i;
+	int		p;
+	char	v;
 
-	size = 0;
-	len = 0;
-	while (s[size])
-		size++;
-	size++;
-	pdf = (char	*)malloc(sizeof(char) * size);
-	while (len < size)
+	p = 0;
+	i = 0;
+	v = (char )c;
+	if (s[i] == '\0' && v == '\0')
 	{
-		pdf[len] = s[len];
-		len++;
+		return ((char *)&s[i]);
 	}
-	pdf[len] = '\0';
-	return (pdf);
+	while (s[i])
+	{
+		if (s[i] == v)
+			p = i;
+		i++;
+	}
+	if (v == '\0')
+		return ((char *)&s[i]);
+	if (p == 0 && s[0] != v)
+		return (0);
+	return ((char *)&s[p]);
 }

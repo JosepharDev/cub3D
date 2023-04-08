@@ -1,200 +1,189 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:57:16 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/05 17:04:15 by yoyahya          ###   ########.fr       */
+/*   Created: 2023/04/07 10:34:27 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/08 13:21:15 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000000
+# endif
 
+# define X_EVENT_KEY_EXIT       17
+# define ESC       53
+# define FOV 66.66
+# define SPEED 15
+# define WIDTH 1500
+# define HEIGHT 1200
+# define TILE_SIZE 30
 
-# include <math.h>
+# define UPR 1
+# define UPL -1
+# define DOWNR 0
+# define DOWNL -2
+# define UP 13
+# define DOWN 1
+# define RIGHT 2
+# define LEFT 0
+# define ROTR 124
+# define ROTL 123
+
 # include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
 # include <fcntl.h>
+# include <unistd.h>
+# include <math.h>
+# include <stdlib.h>
 # include <mlx.h>
-# include "getnextline/get_next_line.h"
 
-# define KEY_EXIT	17
-# define ESC		53
-# define TZ			30
-# define WIDTH		70
-# define HEIGHT		30
-# define FOV		66
-# define WHITE		70
-# define HEIGHT		30
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 
+char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+void	ft_bzero(void	*s, size_t	n);
+void	*ft_calloc(size_t count, size_t size);
+int		ft_strlen(const char *s);
 
 typedef struct s_textur
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*floor;
-	char	*ceil;
-}				t_textur;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+}	t_textur;
 
-typedef struct s_position
+typedef struct s_vector
 {
-	int	px;
-	int	py;
-}				t_position;
+	int	x;
+	int	y;
+}	t_vector;
 
 typedef struct s_map
 {
 	char		**map;
 	int			height;
-	int			width;
-	char		start_p;
-	int			floor_c;
-	int			ceil_c;
 	t_textur	*textur;
-	t_position	player;
-}				t_map;
+	char		starting_pos;
+	int			floor_color;
+	int			ceilling_color;
+	t_vector	player;
+
+}	t_map;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	char	**map_contant;
+	int		size;
+	char	*fd;
+	t_map	*map;
+}	t_game;
 
 typedef struct s_point
 {
 	double	x;
-	double	sx;
+	double	signx;
 	double	y;
-	double	sy;
-}			t_point;
+	double	signy;
+}	t_point;
 
-typedef struct s_img
-{
+typedef struct s_img{
 	void	*img;
 	int		w;
 	int		h;
 	char	*addr;
 	char	*dst;
-	int		pixel;
+	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}			t_img;
+}	t_img;
 
-typedef struct s_win
-{
-	void	*mlxp;
-	void	*mlxw;
+typedef struct s_win{
+	void	*mlx_p;
+	void	*mlx_w;
 	void	*img_0;
 	void	*img_1;
 	void	*img_p;
-}			t_win;
+}	t_win;
 
-typedef	struct s_calcul
-{
-	int			wtex;
+typedef struct s_player{
+	t_win		*win;
+	t_map		*map;
+	int			which_tex;
 	double		tox;
 	double		toy;
 	double		rotangle;
 	double		rayangle;
 	double		x;
 	double		mousex;
-	double		mouse_ang;
+	double		mouseang;
 	double		y;
-	int			map_ht;
-	int			win_ht;
-	int			win_wh;
-}				t_calcul;
-
-typedef struct s_player
-{
-	t_win		*win;
-	t_map		*map;
-	t_calcul	calc;	
+	int			map_height;
+	int			win_height;
+	int			win_width;
 	t_img		wind;
-	t_img		*img_e;
-	t_img		*img_n;
-	t_img		*img_w;
-	t_img		*img_s;
-}				t_player;
+	t_img		img_e;
+	t_img		img_n;
+	t_img		img_w;
+	t_img		img_s;
+}	t_player;
 
-
-typedef struct s_game
-{
-	void	*mlx;
-	void	*win;
-	int		size;
-	char	*fd_name;
-	t_map	*map;
-}				t_game;
-
-
-
-// CUB3D---------------->REY-CASTING:
-t_point	get_dirv(double ang);
-t_point	get_dirh(double ang);
-t_point	get_vsign(double ang);
-t_img	*get_wich(t_player *p);
-t_point	get_hsign(double angle);
-void	fcub3d_game(t_player *p);
-void	fdda_vertical(t_player *p);
 void	fdda_algorithm(t_player *p);
-void    file_texture(t_player   *p);
-void	fdda_horizontal(t_player *p);
-void    flinked_data_addr(t_player  *pr);
 double	translate_deg_to_rad(double angle);
-void	fplayer(char	**map, t_player *p);
-int		is_wallv(t_player *p, int x, int y);
-int		is_wallh(t_player *p, int x, int y);
-void    fcheck_valid_texture(t_player   *p);
-int		fvalid_mouve(t_player *p, double x, double y);
-void	my_pixel_put(t_img data, int x, int y, int *color);
-void	fcheck_position(t_player *p, int c, int i, int j);
-void	draw(t_player *p, double wallh, double dis, int i);
-int		get_color(t_img *data, int x, int y, t_player	*p);
-int		draw_line(t_point fr, double toy, int color, t_img p_img);
-double	get_dis(double stx, double sty, double endx, double endy);
-void	ddah_code(t_player *p, t_point inc, t_point grid, t_point d);
-void	check_wich(t_player *p, double dish, double disv, t_point hor);
-int		draw_texture(t_point fr, t_img p_img, t_player *p, double wallh);
-void	ddav_code(t_player *p, t_point increment, t_point grid, t_point d);
+int		is_wallh(t_player *p, int px, int py);
+void	cub3d_game(t_player *p);
+t_img	get_wich(t_player *p);
+int		get_color(t_img data, int x, int y);
+void	my_pixel_put(t_img data, int x, int y, int color);
+void	move_player(int key, t_player *p);
+void	get_player_info(char **map, t_player *p);
+void	fdda_horizontal(t_player *p);
+void	fdda_vertical(t_player *p);
+void	ft_error(char *error);
+int		ft_strlen(const char *s);
+char	*get_next_line(int fd);
+char	*get_next_line_2(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s1);
+void	ft_putnbr(int n);
+char	**ft_split(char const *s, char c, int *k);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		fcalc_nb(const char *str);
 
-// CUB3D--------------->PARSING:
-void	rgb_f(t_map *map);
-void	rgb_c(t_map *map);
-void	init(t_game *game);
-int		is_map(char *line);
-int		white_s(char *line);
-int		is_valid(char *arg);
-void	line_del(t_map *map);
-int		get_mlen(char **str);
-int		get_height(char **str);
-char	*get_last(char *name);
-void	v_texture(t_map *map);
-void	valid_map(t_map *map);
+// parser Function
+char	*join_and_free(char *save, char *buffer);
+char	*move_to_rest(char *stock);
+char	*get_line(char *stock);
+char	*read_file(int fd, char *save);
+char	*fjoin(char *s1, char *s2);
+size_t	strchr_newline(char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	fcheck_fd(t_game *game);
+void	ft_error(char *error);
+void	fsetting(t_game *game);
+int		collect_element(t_game *game);
+void	hndl_collore(t_game *game, int i);
+void	hndl_textur(t_game *game, int i);
+void	textur_extention(char *str);
+void	check_existing(char *str);
+void	collect_map(t_game *game, int index);
+void	check_map(t_map *map);
+
+// rendering 
 void	free_matrix(char **mx);
-int		check_name(char *name);
-void	get_player(t_map *map);
-int		len_matrix(char **arr);
-int		is_texture(char *line);
-void	map_withspace(t_map *map);
-void	ft_error(char *str, char *fre);
-int		read_file(t_game *game, int fd);
-void	parser(t_game *game, char *name);
-void	store_map(t_game *game, char *line);
-void	check_line(t_game *game, char *line);
-char	**dup_matrix(char **arr, char *line);
-int		get_texture(t_game *game, char *line);
-
-// CUB3D--------------->PARSING---UTILS:
-int		ft_isalpha(char c);
-int		ft_isdigit(char c);
-char	*ft_strdup(char *s1);
-int		ft_strlen(char *str);
-char	**ft_split(char *s, char c);
-void	ft_error(char *str, char *fre);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char *s, unsigned int start, size_t len);
+char	**ft_sp(char *s, char c);
+void	rendering_cub3d(t_map *map);
 
 #endif

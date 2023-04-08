@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   fcalc_nb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 21:48:04 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 10:44:45 by mdarify          ###   ########.fr       */
+/*   Created: 2023/04/06 21:44:22 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/07 11:41:45 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*ft_strdup(const	char	*s)
+int	fcalc_nb(const char *s)
 {
-	char	*pdf;
-	int		size;
-	int		len;
+	int	nb;
+	int	l1;
 
-	size = 0;
-	len = 0;
-	while (s[size])
-		size++;
-	size++;
-	pdf = (char	*)malloc(sizeof(char) * size);
-	while (len < size)
+	nb = 0;
+	l1 = 0;
+	while (s[l1])
 	{
-		pdf[len] = s[len];
-		len++;
+		if (s[l1] < '0' || s[l1] > '9')
+		{
+			write(2, "error : number of colors\n", 26);
+			exit(1);
+		}
+		l1++;
 	}
-	pdf[len] = '\0';
-	return (pdf);
+	while (*s >= '0' && *s <= '9')
+	{
+		nb = nb * 10 + *s - '0';
+		if (nb > 255)
+		{
+			write(2, "error : number of colors\n", 26);
+			exit(1);
+		}
+		s++;
+	}
+	return (nb);
 }

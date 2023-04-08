@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 21:48:04 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 10:44:45 by mdarify          ###   ########.fr       */
+/*   Created: 2023/04/06 21:47:57 by mdarify           #+#    #+#             */
+/*   Updated: 2023/04/08 10:44:40 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*ft_strdup(const	char	*s)
-{
-	char	*pdf;
-	int		size;
-	int		len;
+char	*ft_strchr(const char *s, int c)
+{	
+	int	i;
 
-	size = 0;
-	len = 0;
-	while (s[size])
-		size++;
-	size++;
-	pdf = (char	*)malloc(sizeof(char) * size);
-	while (len < size)
+	i = 0;
+	while (s[i])
 	{
-		pdf[len] = s[len];
-		len++;
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
 	}
-	pdf[len] = '\0';
-	return (pdf);
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
 }
