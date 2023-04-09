@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 22:35:50 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 00:14:38 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	store_map(t_game *game, char *line)
 
 void	check_line1(t_game *game, char *line)
 {
-	if (!game->map->textur->north_texture || !game->map->textur->east_texture
-		|| !game->map->textur->west_texture || !game->map->textur->south_texture
-		|| !game->map->textur->floor || !game->map->textur->ceil)
-		ft_error1("Error\ninvalid map some ddddtexture missing\n", NULL);
+	if ((!game->map->textur->north_texture || !game->map->textur->east_texture \
+	|| !game->map->textur->west_texture || !game->map->textur->south_texture \
+	|| !game->map->textur->floor || !game->map->textur->ceil) && line[0])
+		ft_error1("Error\ninvalid map some texture missing\n", NULL);
 	else
 	{
 		if (check_player(line, game->map) == 1
@@ -86,7 +86,9 @@ void	check_line(t_game *game, char *line)
 	if (!white_s(line))
 		ft_error1("Error\ninvalid map some invalid white spaces/n", NULL);
 	if (is_map(line))
+	{
 		check_line1(game, line);
+	}
 	else if (is_texture(line))
 	{
 		if (!get_texture(game, line))
