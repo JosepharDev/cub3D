@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 00:16:51 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	check_player(char *line, t_map *map)
 			if (line[i] && line[i + 1] != '0' && line[i + 1] != '1'
 				&& line[i + 1] != ' ')
 				ft_error1("Error\nmap is messing\n", NULL);
-			if (map->starting_pos)
+			if (map->pos)
 				return (1);
-			map->starting_pos = line[i];
+			map->pos = line[i];
 		}
 		i++;
 	}
@@ -68,14 +68,14 @@ void	store_map(t_game *game, char *line)
 
 void	check_line1(t_game *game, char *line)
 {
-	if ((!game->map->textur->north_texture || !game->map->textur->east_texture \
-	|| !game->map->textur->west_texture || !game->map->textur->south_texture \
+	if ((!game->map->textur->no || !game->map->textur->east_texture \
+	|| !game->map->textur->west_texture || !game->map->textur->so \
 	|| !game->map->textur->floor || !game->map->textur->ceil) && line[0])
 		ft_error1("Error\ninvalid map some texture missing\n", NULL);
 	else
 	{
 		if (check_player(line, game->map) == 1
-			&& game->map->starting_pos != '\0')
+			&& game->map->pos != '\0')
 			ft_error1("duplicated player\n", NULL);
 		store_map(game, line);
 	}
@@ -92,9 +92,9 @@ void	check_line(t_game *game, char *line)
 		if (!get_texture(game, line))
 			ft_error1("Error\nduplicate texture\n", NULL);
 	}
-	else if (!game->map->textur->north_texture
+	else if (!game->map->textur->no
 		|| !game->map->textur->east_texture
-		|| !game->map->textur->west_texture || !game->map->textur->south_texture
+		|| !game->map->textur->west_texture || !game->map->textur->so
 		|| !game->map->textur->floor || !game->map->textur->ceil)
 		ft_error1("Error\ninvalid map some texture missing\n", NULL);
 	else

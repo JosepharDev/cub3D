@@ -6,13 +6,13 @@
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:48:47 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/07 14:17:23 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/09 12:06:07 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static	char	*ft_strcat(char *pdf, char *dest, char *src)
+char	*ft_strcat(char *pdf, char *dest, char *src)
 {
 	int	m;
 	int	n;

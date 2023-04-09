@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   v_texture.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 00:28:06 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	is_texture(char *line)
 
 void	v_texture(t_map *map)
 {
-	get_path(map->textur->north_texture);
+	get_path(map->textur->no);
 	get_path(map->textur->east_texture);
-	get_path(map->textur->south_texture);
+	get_path(map->textur->so);
 	get_path(map->textur->west_texture);
 	rgb_f(map);
 	rgb_c(map);

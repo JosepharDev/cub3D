@@ -6,14 +6,14 @@
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:41:09 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 14:19:54 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/09 17:03:12 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 int	draw_line(t_point fr, double toy, int color, t_img p_img)
-{	
+{
 	while (fr.y < toy)
 	{
 		my_pixel_put(p_img, fr.x, fr.y, color);
@@ -22,7 +22,7 @@ int	draw_line(t_point fr, double toy, int color, t_img p_img)
 	return (0);
 }
 
-int	draw_texture(t_point fr, t_img p_img, t_player *p, double wallh)
+int	draw_texture(t_point fr, t_img p_img, t_cub *p, double wallh)
 {
 	t_img	img;
 	double	newy;
@@ -32,7 +32,7 @@ int	draw_texture(t_point fr, t_img p_img, t_player *p, double wallh)
 	img = get_wich(p);
 	newy = 0;
 	inc = img.h / (2 * wallh);
-	p->tox = floor((int)(img.w * ((p->tox + p->toy) / TILE_SIZE)) % img.w);
+	p->tox = floor((int)(img.w * ((p->tox + p->toy) / TZ)) % img.w);
 	if ((2 * wallh) > p->win_height)
 		newy = (int)((((2 * wallh) - p->win_height) / 2) * inc) % img.h;
 	p->toy = p->win_height - fr.y;
@@ -48,22 +48,20 @@ int	draw_texture(t_point fr, t_img p_img, t_player *p, double wallh)
 	return (0);
 }
 
-void	draw(t_player *p, double wallh, double dis, int i)
+void	draw(t_cub *p, double wallh, double dis, int i)
 {
 	t_point	from;
 
 	from.x = i;
 	from.y = 0;
-	draw_line(from, (p->win_height / 2) \
-		- wallh, p->map->ceilling_color, p->wind);
+	draw_line(from, (p->win_height / 2) - wallh, p->map->c_c, p->wind);
 	from.y = (p->win_height / 2) - wallh;
-	draw_texture(from, p->wind, p, \
-		roundf((p->win_height / dis) * TILE_SIZE));
+	draw_texture(from, p->wind, p, roundf((p->win_height / dis) * TZ));
 	from.y = (p->win_height / 2) + wallh;
-	draw_line(from, p->win_height - 1, p->map->floor_color, p->wind);
+	draw_line(from, p->win_height - 1, p->map->f_c, p->wind);
 }
 
-void	cub3d_game(t_player *p)
+void	cub3d_game(t_cub *p)
 {
 	double	distance;
 	double	wall_height;
@@ -77,8 +75,9 @@ void	cub3d_game(t_player *p)
 		p->toy = p->y;
 		fdda_algorithm(p);
 		distance = sqrt(pow(p->x - p->tox, 2.0) + pow(p->y - p->toy, 2.0));
-		distance = distance * cos(translate_deg_to_rad(p->rayangle - p->rotangle));
-		wall_height = roundf(((p->win_height) / distance) * TILE_SIZE);
+		distance = distance * cos(translate_deg_to_rad(p->rayangle
+					- p->rotangle));
+		wall_height = roundf(((p->win_height) / distance) * TZ);
 		if (wall_height > p->win_height / 2)
 			wall_height = p->win_height / 2;
 		draw(p, wall_height, distance, l1);

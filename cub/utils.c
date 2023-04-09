@@ -6,7 +6,7 @@
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:41:28 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 13:22:38 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/09 15:18:45 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	get_color(t_img data, int x, int y)
 {
 	char	*dst;
 
-	dst = data.addr + (y * data.line_length + x * (data.bits_per_pixel / 8));
-	return (*(unsigned int *) dst);
+	dst = data.addr + (y * data.l_len + x * (data.px / 8));
+	return (*(unsigned int *)dst);
 }
 
 void	my_pixel_put(t_img data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data.addr + (y * data.line_length + x * (data.bits_per_pixel / 8));
-	*(unsigned int *) dst = color;
+	dst = data.addr + (y * data.l_len + x * (data.px / 8));
+	*(unsigned int *)dst = color;
 }
 
-t_img	get_wich(t_player *p)
+t_img	get_wich(t_cub *p)
 {
 	if (p->which_tex == 'E')
 		return (p->img_e);

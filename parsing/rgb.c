@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 22:38:37 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 15:22:31 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	rgb_f(t_map *map)
 	if (len_matrix(rgb) != 3)
 	{
 		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
-		{	
+		{
 			free_matrix(rgb);
 			ft_error1("Error\ninvalid rgb\n", NULL);
 		}
 	}
-	map->floor_color = get_color1(rgb);
+	map->f_c = get_color1(rgb);
 	free_matrix(rgb);
 	return ;
 }
@@ -109,12 +109,12 @@ void	rgb_c(t_map *map)
 	if (len_matrix(rgb) != 3)
 	{
 		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
-		{	
+		{
 			free_matrix(rgb);
 			ft_error1("Error\ninvalid rgb\n", NULL);
 		}
 	}
-	map->ceilling_color = get_color1(rgb);
+	map->c_c = get_color1(rgb);
 	free_matrix(rgb);
 	return ;
 }

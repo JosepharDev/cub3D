@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:34:08 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 00:27:15 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:38:23 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,9 @@ void	init(t_game *game)
 	game->map->textur->ceil = NULL;
 	game->map->textur->east_texture = NULL;
 	game->map->textur->floor = NULL;
-	game->map->textur->north_texture = NULL;
-	game->map->textur->south_texture = NULL;
+	game->map->textur->no = NULL;
+	game->map->textur->so = NULL;
 	game->map->textur->west_texture = NULL;
 	game->map->map = NULL;
-	game->map->starting_pos = '\0';
-}
-
-void	parser(t_game *game, char *name)
-{
-	int	fd;
-
-	init(game);
-	fd = is_valid1(name);
-	read_file1(game, fd);
-	if (!game->map->starting_pos)
-		ft_error1("Error\nplayer is mission\n", NULL);
-	v_texture(game->map);
-	game->map->height = get_height(game->map->map);
-	game->map->width = get_mlen(game->map->map);
-	valid_map(game->map);
+	game->map->pos = '\0';
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 13:36:25 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 17:29:40 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 18:39:16 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ int	len_matrix(char **arr)
 	while (arr[i])
 		i++;
 	return (i);
-}
-
-void	free_matrix(char **mx)
-{
-	int	i;
-
-	i = 0;
-	while (mx[i])
-	{
-		free(mx[i]);
-		i++;
-	}
-	free(mx);
 }
 
 int	ft_strlen1(char *str)

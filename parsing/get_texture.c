@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 22:50:25 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int	get_texture1(t_game *game, char *line, int len, int i)
 {
 	if (ft_strncmp(&line[i], "NO ", 3) == 0 && len > 3 && texture_line(line))
 	{
-		if (game->map->textur->north_texture)
+		if (game->map->textur->no)
 			return (0);
-		game->map->textur->north_texture = ft_strdup(line + 3);
+		game->map->textur->no = ft_strdup(line + 3);
 	}
 	else if (ft_strncmp(&line[i], "SO ", 3) == 0 && len > 3
 		&& texture_line(line))
 	{
-		if (game->map->textur->south_texture)
+		if (game->map->textur->so)
 			return (0);
-		game->map->textur->south_texture = ft_strdup(line + 3);
+		game->map->textur->so = ft_strdup(line + 3);
 	}
 	return (get_texture2(game, line, len, i));
 }

@@ -6,25 +6,25 @@
 /*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:37:35 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/08 13:22:55 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/09 17:08:08 by mdarify          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-double	get_dis(double stx, double sty, double endx, double endy)
+double	fcalc_distance(double startx, double starty, double endx, double endy)
 {
 	double	start_pow;
 	double	end_pow;
 	double	calc_sqrt;
 
-	start_pow = pow(endx - stx, 2);
-	end_pow = pow(endy - sty, 2);
+	start_pow = pow(endx - startx, 2);
+	end_pow = pow(endy - starty, 2);
 	calc_sqrt = sqrt(start_pow + end_pow);
-	return (sqrt(pow(endx - stx, 2) + pow(endy - sty, 2)));
+	return (sqrt(pow(endx - startx, 2) + pow(endy - starty, 2)));
 }
 
-void	fsin_direction(t_player *p)
+void	fsin_direction(t_cub *p)
 {
 	double	calc_sin;
 
@@ -35,7 +35,7 @@ void	fsin_direction(t_player *p)
 		p->which_tex = 'S';
 }
 
-void	fcos_direction(t_player *p, t_point	hor)
+void	fcos_direction(t_cub *p, t_point hor)
 {
 	double	calc_cos;
 
@@ -48,15 +48,15 @@ void	fcos_direction(t_player *p, t_point	hor)
 	p->toy = hor.y;
 }
 
-void	check_wich(t_player *p, double dish, double disv, t_point hor)
+void	fdirection(t_cub *p, double dhor, double dvert, t_point hor)
 {
-	if (((dish > disv) && disv != 0) || dish == 0)
+	if (((dhor > dvert) && dvert != 0) || dhor == 0)
 		fsin_direction(p);
 	else
 		fcos_direction(p, hor);
 }
 
-void	fdda_algorithm(t_player *p)
+void	fdda_algorithm(t_cub *p)
 {
 	t_point	hor;
 	double	dis_horizontal;
@@ -66,7 +66,7 @@ void	fdda_algorithm(t_player *p)
 	hor.x = p->tox;
 	hor.y = p->toy;
 	fdda_vertical(p);
-	dis_horizontal = get_dis(p->x, p->y, hor.x, hor.y);
-	dis_vertical = get_dis(p->x, p->y, p->tox, p->toy);
-	check_wich(p, dis_horizontal, dis_vertical, hor);
+	dis_horizontal = fcalc_distance(p->x, p->y, hor.x, hor.y);
+	dis_vertical = fcalc_distance(p->x, p->y, p->tox, p->toy);
+	fdirection(p, dis_horizontal, dis_vertical, hor);
 }
