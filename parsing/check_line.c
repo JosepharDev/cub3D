@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 00:14:38 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 00:16:51 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ void	check_line(t_game *game, char *line)
 	if (!white_s(line))
 		ft_error1("Error\ninvalid map some invalid white spaces/n", NULL);
 	if (is_map(line))
-	{
 		check_line1(game, line);
-	}
 	else if (is_texture(line))
 	{
 		if (!get_texture(game, line))

@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 22:51:04 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/09 00:28:06 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	get_path(char *line)
 	path = ft_substr1(line, i, j - i);
 	len = ft_strlen1(path);
 	if (len >= 5 && ft_strncmp(&path[len - 4], ".xpm", 4) == 0)
+	{
+		free(path);
 		return ;
+	}
 	else
 		ft_error1("Error\npath should include .xmp\n", path);
 	free(path);
