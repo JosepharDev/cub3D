@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/10 21:22:03 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	store_map(t_game *game, char *line)
 
 void	check_line1(t_game *game, char *line)
 {
-	if ((!game->map->textur->no || !game->map->textur->east_texture \
+	if (!game->map->textur->no || !game->map->textur->east_texture \
 	|| !game->map->textur->west_texture || !game->map->textur->so \
-	|| !game->map->textur->floor || !game->map->textur->ceil) && line[0])
+	|| !game->map->textur->floor || !game->map->textur->ceil)
 		ft_error1("Error\ninvalid map some texture missing\n", NULL);
 	else
 	{
@@ -84,7 +84,7 @@ void	check_line1(t_game *game, char *line)
 void	check_line(t_game *game, char *line)
 {
 	if (!white_s(line))
-		ft_error1("Error\ninvalid map some invalid white spaces/n", NULL);
+		ft_error1("Error\ninvalid map some invalid white spaces\n", NULL);
 	if (is_map(line))
 		check_line1(game, line);
 	else if (is_texture(line))

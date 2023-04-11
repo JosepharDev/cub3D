@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:47:44 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 15:22:31 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/10 22:09:07 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ void	rgb_f(t_map *map)
 	i = check_semi(map->textur->floor);
 	if (i == -1 || i != 2)
 		ft_error1("Error\ninvalid texture\n", NULL);
-	replace_char(map->textur->floor, ',');
-	rgb = ft_split1(map->textur->floor, ' ');
+	rgb = ft_split1(map->textur->floor, ',');
 	if (len_matrix(rgb) != 3)
 	{
 		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')
@@ -104,8 +103,7 @@ void	rgb_c(t_map *map)
 	i = check_semi(map->textur->ceil);
 	if (i == -1 || i != 2)
 		ft_error1("Error\ninvalid texture\n", NULL);
-	replace_char(map->textur->ceil, ',');
-	rgb = ft_split1(map->textur->ceil, ' ');
+	rgb = ft_split1(map->textur->ceil, ',');
 	if (len_matrix(rgb) != 3)
 	{
 		if (len_matrix(rgb) == 3 && rgb[2][0] != '\n')

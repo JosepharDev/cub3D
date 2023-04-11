@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/10 22:49:45 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+char	*delchar(char *line, char c)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == c)
+			line[i] = '\0';
+		i++;
+	}
+	return (line);
+}
 
 int	get_texture2(t_game *game, char *line, int len, int i)
 {
@@ -18,14 +32,14 @@ int	get_texture2(t_game *game, char *line, int len, int i)
 	{
 		if (game->map->textur->west_texture)
 			return (0);
-		game->map->textur->west_texture = ft_strdup(line + 3);
+		game->map->textur->west_texture = ft_strdup(delchar(line + 3, '\n'));
 	}
 	else if (ft_strncmp(&line[i], "EA ", 3) == 0 && len > 3
 		&& texture_line(line))
 	{
 		if (game->map->textur->east_texture && texture_line(line))
 			return (0);
-		game->map->textur->east_texture = ft_strdup(line + 3);
+		game->map->textur->east_texture = ft_strdup(delchar(line + 3, '\n'));
 	}
 	return (1);
 }
@@ -36,14 +50,14 @@ int	get_texture1(t_game *game, char *line, int len, int i)
 	{
 		if (game->map->textur->no)
 			return (0);
-		game->map->textur->no = ft_strdup(line + 3);
+		game->map->textur->no = ft_strdup(delchar(line + 3, '\n'));
 	}
 	else if (ft_strncmp(&line[i], "SO ", 3) == 0 && len > 3
 		&& texture_line(line))
 	{
 		if (game->map->textur->so)
 			return (0);
-		game->map->textur->so = ft_strdup(line + 3);
+		game->map->textur->so = ft_strdup(delchar(line + 3, '\n'));
 	}
 	return (get_texture2(game, line, len, i));
 }

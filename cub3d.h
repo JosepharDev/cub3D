@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:34:27 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/09 18:42:13 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/10 20:34:51 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include "getnextline/get_next_line.h"
 
 typedef struct s_textur
 {

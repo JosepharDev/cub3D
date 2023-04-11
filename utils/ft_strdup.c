@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:48:04 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/09 18:33:42 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/10 20:31:01 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(const	char	*s)
 	while (s[size])
 		size++;
 	size++;
-	pdf = (char *)malloc (sizeof(char) * size);
+	pdf = (char *)malloc (sizeof(char) * (size + 1));
 	while (len < size)
 	{
 		pdf[len] = s[len];

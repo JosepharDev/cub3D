@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+         #
+#    By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 13:22:57 by mdarify           #+#    #+#              #
-#    Updated: 2023/04/09 17:56:03 by mdarify          ###   ########.fr        #
+#    Updated: 2023/04/10 20:43:08 by yoyahya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRCS = parsing/check_line.c parsing/error.c parsing/is_valid.c parsing/parser.c 
 	cub/fdda.c cub/fddah.c cub/fddav.c cub/info.c cub/move.c cub/rend.c cub/rend3d.c cub/utils.c cub/texture.c cub/mouse.c\
 	utils1/ft_isalpha1.c utils1/ft_isdigit1.c utils1/ft_split1.c utils1/ft_strdup1.c utils1/ft_strjoin1.c utils1/ft_substr1.c\
 	utils/fcalc_nb.c utils/ft_calloc.c utils/ft_strchr.c utils/ft_strdup.c\
-	utils/ft_strjoin.c utils/ft_strlen.c utils/ft_strncmp.c utils/ft_strrchr.c utils/gcl.c utils/util.c\
-	utils/ft_itoa.c utils/ft_sp.c cub3d.c 
+	utils/ft_strjoin.c utils/ft_strlen.c utils/ft_strncmp.c utils/ft_strrchr.c getnextline/get_next_line.c getnextline/get_next_line_utils.c\
+	utils/ft_itoa.c utils/ft_sp.c cub3D.c 
  
 OBJ = $(SRCS:.c=.o)
 MLX_FLAGS    = -lmlx -framework OpenGL -framework Appkit

@@ -6,18 +6,24 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:44:59 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/08 22:52:34 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/10 22:13:07 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	ft_isspace(char c)
+void	check_v(char *str)
 {
-	if (c == '\t' || c == '\v' || c == '\r' || c == ' '
-		|| c == '\n' || c == '\f')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (str[i])
+	{
+		while (str[i] && str[i] == ' ')
+			i++;
+		if (str[i] && ft_isdigit1(str[i]))
+			ft_error1("Error\nSpace Within RGB Color\n", NULL);
+	}
 }
 
 int	ft_atoi(char *str)
@@ -29,7 +35,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	nbr = 0;
-	while (ft_isspace(str[i]) == 1)
+	while (str[i] && str[i] == ' ')
 		i++;
 	if (str[i] == '-')
 	{
@@ -39,8 +45,7 @@ int	ft_atoi(char *str)
 	else if (str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
-	{
 		nbr = (nbr * 10) + str[i++] - 48;
-	}
+	check_v(&str[i]);
 	return ((int)(nbr * sign));
 }
