@@ -1,7 +1,7 @@
-NO          ./textures/wl1.xpm
-SO ./textures/fb1.xpm
-EA ./textures/fb2.xpm
-WE ./textures/fb3.xpm
+   NO                 ./textures/wl1.xpm          
+     SO     ./textures/fb1.xpm         
+    EA     ./textures/fb2.xpm      
+      WE      ./textures/fb3.xpm         
 
 C 155,100,160
 F 111,111,111

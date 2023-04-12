@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   v_texture.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdarify <mdarify@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/09 15:38:46 by mdarify          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:14:13 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	get_path(char *line)
+char	*get_path(char *line)
 {
 	int		i;
 	int		len;
@@ -24,7 +24,7 @@ void	get_path(char *line)
 	while (line[i] && line[i] == ' ')
 		i++;
 	if (!line[i] || line[i] == '\n')
-		ft_error1("Error\ntexture path messing\n", NULL);
+		ft_error1("Error\ntexture path missing\n", NULL);
 	j = i;
 	while (line[j] && line[j] != ' ' && line[j] != '\n')
 		j++;
@@ -33,11 +33,12 @@ void	get_path(char *line)
 	if (len >= 5 && ft_strncmp(&path[len - 4], ".xpm", 4) == 0)
 	{
 		free(path);
-		return ;
+		return (path);
 	}
 	else
 		ft_error1("Error\npath should include .xmp\n", path);
 	free(path);
+	return (path);
 }
 
 int	is_texture(char *line)

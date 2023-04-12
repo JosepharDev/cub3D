@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/10 21:22:03 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:46:13 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	texture_line(char *line)
 			return (1);
 		}
 		else
-			ft_error1("Error\ninvalid texture", NULL);
+			ft_error1("Error\ninvalid texture\n", NULL);
 	}
 	free_matrix(texture);
 	return (1);
@@ -44,7 +44,7 @@ int	check_player(char *line, t_map *map)
 		{
 			if (line[i] && line[i + 1] != '0' && line[i + 1] != '1'
 				&& line[i + 1] != ' ')
-				ft_error1("Error\nmap is messing\n", NULL);
+				ft_error1("Error\nmap is missing\n", NULL);
 			if (map->pos)
 				return (1);
 			map->pos = line[i];
@@ -71,7 +71,7 @@ void	check_line1(t_game *game, char *line)
 	if (!game->map->textur->no || !game->map->textur->east_texture \
 	|| !game->map->textur->west_texture || !game->map->textur->so \
 	|| !game->map->textur->floor || !game->map->textur->ceil)
-		ft_error1("Error\ninvalid map some texture missing\n", NULL);
+		ft_error1("Error\ninvalid map some texture dmissing\n", NULL);
 	else
 	{
 		if (check_player(line, game->map) == 1

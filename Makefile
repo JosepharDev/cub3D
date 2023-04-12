@@ -6,12 +6,12 @@
 #    By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 13:22:57 by mdarify           #+#    #+#              #
-#    Updated: 2023/04/10 20:43:08 by yoyahya          ###   ########.fr        #
+#    Updated: 2023/04/12 02:21:50 by yoyahya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-CC = cc
+CC = cc -O3
 CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 SRCS = parsing/check_line.c parsing/error.c parsing/is_valid.c parsing/parser.c parsing/get_texture.c utils1/ft_atoi.c\
 	parsing/read_file.c parsing/rgb.c parsing/utils.c parsing/utils1.c parsing/v_texture.c parsing/valid_map.c\

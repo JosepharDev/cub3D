@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 10:34:27 by mdarify           #+#    #+#             */
-/*   Updated: 2023/04/10 20:34:51 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:49:27 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,6 @@ char			*get_line(char *stock);
 char			*read_file(int fd, char *save);
 char			*fjoin(char *s1, char *s2);
 size_t			strchr_newline(char *str);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
 void			fcheck_fd(t_game *game);
 void			ft_error(char *error);
 void			fsetting(t_game *game);
@@ -228,4 +227,5 @@ void			v_texture(t_map *map);
 void			valid_map(t_map *map);
 void			get_player(t_map *map);
 int				texture_line(char *line);
+char			*delchar(char *line, char c);
 #endif
