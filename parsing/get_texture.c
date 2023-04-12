@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/12 01:49:26 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:43:43 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_texture2(t_game *game, char *line, int len)
 	char	*tmp;
 
 	tmp = NULL;
-	if (ft_strncmp(line, "WE ", 3) == 0)
+	if (ft_strncmp(line, "WE ", 3) == 0 && len > 3 && texture_line(line))
 	{
 		if (game->map->textur->west_texture)
 			return (0);

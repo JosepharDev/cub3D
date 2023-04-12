@@ -6,7 +6,7 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:44:41 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/12 01:46:13 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:43:04 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	check_line1(t_game *game, char *line)
 	if (!game->map->textur->no || !game->map->textur->east_texture \
 	|| !game->map->textur->west_texture || !game->map->textur->so \
 	|| !game->map->textur->floor || !game->map->textur->ceil)
-		ft_error1("Error\ninvalid map some texture dmissing\n", NULL);
+		ft_error1("Error\ninvalid map some texture missing\n", NULL);
 	else
 	{
 		if (check_player(line, game->map) == 1

@@ -6,13 +6,13 @@
 /*   By: yoyahya <yoyahya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 10:36:27 by yoyahya           #+#    #+#             */
-/*   Updated: 2023/04/12 01:14:13 by yoyahya          ###   ########.fr       */
+/*   Updated: 2023/04/12 02:44:59 by yoyahya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*get_path(char *line)
+void	get_path(char *line)
 {
 	int		i;
 	int		len;
@@ -33,12 +33,12 @@ char	*get_path(char *line)
 	if (len >= 5 && ft_strncmp(&path[len - 4], ".xpm", 4) == 0)
 	{
 		free(path);
-		return (path);
+		return ;
 	}
 	else
 		ft_error1("Error\npath should include .xmp\n", path);
 	free(path);
-	return (path);
+	return ;
 }
 
 int	is_texture(char *line)
